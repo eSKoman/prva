@@ -7,6 +7,7 @@ a {
 a:hover {
     color: #660000;
 }
+
 header ul li {
     line-height: 40px;
     padding: 15px;
@@ -14,14 +15,18 @@ header ul li {
     list-style-type: none;
     display: inline;
 }
+
 header ul li a {
     float: left;
     margin-left: 30px;
 }
+
 table {
     border-spacing: 20px;
     margin-bottom: 80px;
+    border-collapse:collapse;
 }
+
 .right {
     text-align: right;
 }
@@ -29,12 +34,11 @@ table {
 body {
     margin: 50px;
 }
+
 .nad92 {
     color: green;
 }
-table{
-    border-collapse:collapse; 
-}
+
 table tr:nth-child(2n) {
     background-color: #F9F0FA ;
 }
@@ -46,4 +50,21 @@ table tr:nth-child(2n) {
 .marginLR {
     margin-left: 30px;    
     margin-right: 30px; 
+}
+
+.herecMuz {
+    color: blue;
+}
+
+.herecZena {
+    color: red;
+}
+
+ul li {
+    padding: 5px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: large;
 }

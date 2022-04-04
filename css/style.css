@@ -1,0 +1,49 @@
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: red;
+}
+
+a:hover {
+    color: #660000;
+}
+header ul li {
+    line-height: 40px;
+    padding: 15px;
+    font-size: 24px;
+    list-style-type: none;
+    display: inline;
+}
+header ul li a {
+    float: left;
+    margin-left: 30px;
+}
+table {
+    border-spacing: 20px;
+    margin-bottom: 80px;
+}
+.right {
+    text-align: right;
+}
+
+body {
+    margin: 50px;
+}
+.nad92 {
+    color: green;
+}
+table{
+    border-collapse:collapse; 
+}
+table tr:nth-child(2n) {
+    background-color: #F9F0FA ;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.marginLR {
+    margin-left: 30px;    
+    margin-right: 30px; 
+}

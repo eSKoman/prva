@@ -84,6 +84,10 @@ form label, input, textarea {
     box-sizing: border-box;
 }
 
+textarea {
+    resize: none;
+}
+
 input, textarea, select {
     margin-bottom: 10px;
     border: 1px solid #660000;
@@ -94,9 +98,14 @@ input, textarea, select {
     display: inline;
 }
 
-#rating {
-    margin-top: -8px;
-}
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    background-image: linear-gradient(#d61212, #660000);
+  }
 
 .odosli {
     width: 180px;
@@ -136,9 +145,5 @@ input, textarea, select {
     display: block;
     width: 150px;
     margin: auto;
-    padding: 8px;
-}
-
-select option {
     padding: 8px;
 }

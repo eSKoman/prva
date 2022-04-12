@@ -8,7 +8,7 @@ a:hover {
     color: #660000;
 }
 
-header ul li {
+nav ul li {
     line-height: 40px;
     padding: 15px;
     font-size: 24px;
@@ -16,7 +16,7 @@ header ul li {
     display: inline;
 }
 
-header ul li a {
+nav ul li a {
     float: left;
     margin-left: 30px;
 }
@@ -146,4 +146,8 @@ input[type="range"] {
     width: 150px;
     margin: auto;
     padding: 8px;
+}
+
+#posun {
+    margin-left: 160px;
 }

@@ -8,6 +8,11 @@ a:hover {
     color: #660000;
 }
 
+nav {
+    display: block;
+    margin: auto;
+}
+
 nav ul li {
     line-height: 40px;
     padding: 15px;
@@ -150,4 +155,54 @@ input[type="range"] {
 
 #posun {
     margin-left: 160px;
+}
+
+.banner {
+    box-sizing: border-box;
+    margin: auto;
+    max-width: 748px;
+    min-height: 221px;
+    background-image: url("/img/avengers.jpg");
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 20px 50px;
+    color: white;
+    text-shadow: 1px 1px black;
+    font-family: 'Audiowide', cursive;
+    border: 5px solid black;
+    border-radius: 8px;
+}
+
+.banner h2 {
+    font-size: 2rem;
+    margin-top: -5px;
+    text-transform: uppercase;
+}
+
+.banner p {
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.banner a {
+    border: 1px solid red;
+    padding: 8px;
+    background-color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.banner a:hover {
+    background-color: rgb(48, 47, 47);
+    border: 1px solid black;
+    text-shadow: 1px 1px black;
+}
+
+.banner a:active {
+    background-color: black;
+    border: 1px solid red;
+    color: red;
 }

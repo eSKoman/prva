@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        .zelena {
+            color: green;
+        }
+        .tucne {
+            font-weight: bold;
+        }
+        #cervena {
+            color: red;
+        }
+        p {
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        div p {
+            font-size: 24px;
+            display: inline;
+        }
+        div p:nth-child(3) {
+            color: rgb(12, 150, 200);
+            display: block;
+        }
+    </Style>
+</head>
+<body>
+    <h1>CSS3 selektory</h1>
+    <div>
+       <p class="tucne zelena">První odstavec.</p>
+       <p id="cervena">Druhý odstavec.</p>
+       <p>Třetí odstavec.</p>
+       <p>Čtvrtý odstavec.</p>
+    </div>
+</body>
+</html>

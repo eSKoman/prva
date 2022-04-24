@@ -9,8 +9,12 @@ a:hover {
 }
 
 nav {
-    display: block;
-    margin: auto;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
@@ -61,8 +65,26 @@ table tr:nth-child(2n) {
     color: blue;
 }
 
+.herecMuz::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f222";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+}
+
 .herecZena {
     color: red;
+}
+
+.herecZena::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f221";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
 }
 
 ul li {
@@ -251,3 +273,35 @@ input[type="range"] {
     right: 0;
     z-index: 1;
 }
+
+ul.info li {
+    font-weight: 300;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .pismeno::first-letter {
+      color: red;
+      font-weight: 700;
+  }

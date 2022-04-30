@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12.3.1 - Zadanie Kotlár Slavomír</title>
+</head>
+<body>
+    
+
+    <script>
+        rok = 1972;
+        
+        while (rok <= 2030){
+            
+            vysledok = prestupny(rok);
+            okruhly = rok % 10;
+            narodenie = 1986;
+
+            if (rok == narodenie) {
+                if (vysledok == 0){
+
+                    if (okruhly == 0){
+                        console.log("O " + " N " + rok);
+                    } else {
+                        console.log("N " + rok);
+                    }
+                } else {
+
+                    if (okruhly == 0) {
+                        console.log("P" + " O " + " N " + rok)
+                    } else {
+                        console.log("P " + " N " + rok)
+                    }                
+                } 
+            } else {
+                if (vysledok == 0){
+
+                    if (okruhly == 0){
+                        console.log("O " + rok);
+                    } else {
+                        console.log(rok);
+                    }
+                    } else {
+                    
+                    if (okruhly == 0) {
+                        console.log("P" + " O " + rok)
+                    } else {
+                        console.log("P " + rok)
+                    }                
+                } 
+            }
+            rok++;
+        }
+
+        function prestupny(rok) {
+        if (rok % 100 == 0){
+            if (rok % 400 == 0){
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            if (rok % 4 == 0){
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+    }
+    </script>
+</body>
+</html>

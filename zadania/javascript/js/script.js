@@ -12,7 +12,7 @@ function vypocitaj(cislo1, cislo2) {
     document.write("<br>Vykonávam matematické operácie:<br>");
 
     if (cislo2 == 0){
-        document.writeln("<br>Delit nulou nejde!");
+        document.write("<br>Delit nulou nejde!");
     } else {
         podiel = cislo1 / cislo2;
         document.write("<br>" + cislo1 + " / " + cislo2 + " = " + podiel);

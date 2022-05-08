@@ -3,7 +3,7 @@ cislo2 = 2;
 
 vypocitaj(cislo1, cislo2);
 document.write("<br>");
-vypocitaj(10, 5);
+vypocitaj(10, 0);
 
 
 function vypocitaj(cislo1, cislo2) {

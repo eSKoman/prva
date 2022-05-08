@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.3.1 - Zadanie Kotlár Slavomír</title>
+    <style>
+        main {
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        
+
+        input, textarea, button {
+            display: block;
+            width: 300px;
+            margin-bottom: 30px;
+            padding: 10px;
+        }
+
+        table {
+            margin-left: 50px;
+        }
+
+        @media only screen and (max-width: 1461px) {
+            table {
+                margin-left: 0px;
+                margin: auto;
+            }
+            form {
+                width: 50%;
+                margin: auto;
+
+            }
+            input, textarea, button {
+                width: 100%;
+            }
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <form action="">
+
+            <label for="film">Názov filmu:</label>
+            <input type="text" id="film" name="film" placeholder="Vlož názov filmu">
+
+            <label for="rok">Rok vydania:</label>
+            <input type="text" id="rok" name="rok" placeholder="Vlož rok vydania">
+
+            <label for="herci">Herci</label>
+            <textarea id="herci" name="herci" rows="4" cols="50" placeholder="Vlož hercov"></textarea>
+        
+            <button type="button" onclick="odosli(event)">Pridaj</button>
+            <button type="button" onclick="zmazPosledny(event)">Odstráň posledný</button>
+            <button type="button" onclick="zmazKomplet(event)">Odstráň zoznam</button>
+        
+        </form>
+
+        <table id="myTable">
+
+        </table>
+    </main>
+
+<script>
+
+    let zoznam = JSON.parse(localStorage.getItem("zoznam"));
+
+    if (zoznam == null || zoznam == undefined) {
+        zoznam = [];
+    }
+
+    var table = document.getElementById("myTable");
+
+    vykresliTabulku();
+
+    function vykresliTabulku(){
+        table.innerHTML = "<tr><th>Názov filmu</th><th>Rok Vydania</th><th>Herci</th></tr>";
+        
+        for (let i = 0; i < zoznam.length; i++) {
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = zoznam[i].film;
+            cell2.innerHTML = zoznam[i].rok;
+            cell3.innerHTML = zoznam[i].herci;
+    }
+    }
+    
+    // Pridanie položky do zoznamu
+    function odosli(event){
+        event.preventDefault()
+
+        zoznam.push({
+            film: document.getElementById("film").value, 
+            rok: document.getElementById("rok").value, 
+            herci: document.getElementById("herci").value
+        })
+
+        vykresliTabulku();
+
+        localStorage.setItem("zoznam", JSON.stringify(zoznam));
+
+        // nastavenie prázneho inputu po kliknutí na tlačítko
+        document.getElementById("film").value = "";
+        document.getElementById("rok").value = "";
+        document.getElementById("herci").value = "";
+
+        vypisZoznamu();
+    }
+
+    // Vymazanie celého zoznamu
+    function zmazKomplet(event){
+        event.preventDefault()
+
+        zoznam = [];
+        localStorage.setItem("zoznam", JSON.stringify(zoznam));
+
+        vykresliTabulku();
+        vypisZoznamu();
+    }
+
+    // Vymazanie posledného údaju v zozname
+    function zmazPosledny(event){
+        event.preventDefault()
+
+        localStorage.setItem("zoznam", JSON.stringify(zoznam.pop()));
+        if (zoznam == null || zoznam == undefined) {
+            zoznam = [];
+        }
+
+        vykresliTabulku();
+        vypisZoznamu();
+    }
+
+    function vypisZoznamu(){
+        console.log("Aktuálny zoznam filmov:")
+        for (prvek of zoznam) {
+            console.log(prvek);
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slavova easy kalkulačka</title>
+</head>
+<style>
+    input, select, #vysledokTlacitko {
+        padding: 5px 10px;
+    }
+    #oblastPamat {
+        margin-top: 30px;
+    }
+    strong  {
+        padding: 5px 10px;
+        margin-top: 10px;
+        display: block;
+    }
+    h1 {
+        font-size: 1rem;
+    }
+
+</style>
+
+<body>
+    <label for="n1">Zadaj číslo 1: </label>
+    <input type="text" id="n1"/><br/><br/>
+    <label for="n2">Zadaj číslo 2: </label>
+    <input type="text" id="n2"/><br/><br/>
+    
+    <select id="operators">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="/">/</option>
+        <option value="x">x</option>
+    </select>
+    
+    <button onclick="calc(event);" id="vysledokTlacitko">=</button>
+    <input type="text" id="result" disabled/>
+
+    <h1>Posledných 5 uložených príkladov:</h1>
+    <p>
+        <button type="button" onclick="zmazPosledny(event)">Odstráň posledný</button>
+        <button type="button" onclick="zmazKomplet(event)">Odstráň zoznam</button>
+    </p>
+    <div id="oblastPamat">
+
+    </div>
+
+    <script>
+
+        let zoznam = JSON.parse(localStorage.getItem("zoznam"));
+
+        if (zoznam == null || zoznam == undefined) {
+            zoznam = [];
+        }
+
+        var oblastPamat = document.getElementById("oblastPamat");
+
+        zobrazVysledky();
+
+        function zobrazVysledky(){
+            oblastPamat.innerHTML = "";
+
+                for (let i = 0; i < zoznam.length; i++) {
+                    oblastPamat.innerHTML += "<p>" + zoznam[i].n1 + " " + zoznam[i].operator + " " + zoznam[i].n2 + " = "  + zoznam[i].result + "</p>";
+                }
+        }
+        
+        function calc(event)
+        {
+            event.preventDefault()
+
+            var n1 = parseFloat(document.getElementById('n1').value);
+            var n2 = parseFloat(document.getElementById('n2').value);
+
+            var oper = document.getElementById('operators').value       
+            if ( !isNaN(n1) && !isNaN(n2) )         
+                switch (oper) {
+                    case "+":
+                        document.getElementById("result").value = n1 + n2;
+                        if(zoznam.length <= 4){
+                            odosli();
+                            break;
+                        } else {
+                            alert("Pamäť je plná, uvolni miesto!");
+                            break;
+                        }
+                    case "-":
+                        document.getElementById("result").value = n1 - n2;
+                        if(zoznam.length <= 4){
+                            odosli();
+                            break;
+                        } else {
+                            alert("Pamäť je plná, uvolni miesto!");
+                            break;
+                        }
+                    case "/":
+                        if (n2 == 0){
+                            alert("Delit nulou nejde!");
+                            break;
+                        } else {
+                            document.getElementById("result").value = n1 / n2;
+                            if(zoznam.length <= 4){
+                                odosli();
+                                break;
+                            } else {
+                            alert("Pamäť je plná, uvolni miesto!");
+                            break;
+                            }
+                        }
+                    case "x":
+                        document.getElementById("result").value = n1 * n2;
+                        if(zoznam.length <= 4){
+                            odosli();
+                            break;
+                        } else {
+                            alert("Pamäť je plná, uvolni miesto!");
+                            break;
+                        }
+                    
+            } else {
+                alert("Neboli vložené čísla!");
+            }    
+        }
+        
+    function odosli(){
+        
+            zoznam.push({
+                n1: document.getElementById("n1").value,
+                n2: document.getElementById("n2").value,
+                operator: document.getElementById("operators").value,
+                result: document.getElementById("result").value
+            })
+
+        localStorage.setItem("zoznam", JSON.stringify(zoznam));
+        zobrazVysledky();
+    }
+
+    function zmazKomplet(event){
+        event.preventDefault()
+
+        zoznam = [];
+        localStorage.setItem("zoznam", JSON.stringify(zoznam));
+        
+        zobrazVysledky();
+    }
+
+    function zmazPosledny(event){
+        event.preventDefault()
+
+        localStorage.removeItem("zoznam", JSON.stringify(zoznam.pop()));
+
+        if (zoznam === null || zoznam === undefined) {
+            zoznam = [];
+        }
+        localStorage.setItem("zoznam", JSON.stringify(zoznam));       
+        zobrazVysledky();
+    }
+    </script>
+    
+</body>
+</html>

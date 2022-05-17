@@ -81,20 +81,20 @@
                 switch (oper) {
                     case "+":
                         document.getElementById("result").value = n1 + n2;
-                        if(zoznam.length <= 4){
-                            odosli();
+                        if(zoznam.length == 5){
+                            odosliPri5();
                             break;
                         } else {
-                            alert("Pamäť je plná, uvolni miesto!");
+                            odosli();
                             break;
                         }
                     case "-":
                         document.getElementById("result").value = n1 - n2;
-                        if(zoznam.length <= 4){
-                            odosli();
+                        if(zoznam.length == 5){
+                            odosliPri5();
                             break;
                         } else {
-                            alert("Pamäť je plná, uvolni miesto!");
+                            odosli();
                             break;
                         }
                     case "/":
@@ -103,21 +103,21 @@
                             break;
                         } else {
                             document.getElementById("result").value = n1 / n2;
-                            if(zoznam.length <= 4){
-                                odosli();
-                                break;
-                            } else {
-                            alert("Pamäť je plná, uvolni miesto!");
+                            if(zoznam.length == 5){
+                            odosliPri5();
                             break;
-                            }
+                        } else {
+                            odosli();
+                            break;
+                        }
                         }
                     case "x":
                         document.getElementById("result").value = n1 * n2;
-                        if(zoznam.length <= 4){
-                            odosli();
+                        if(zoznam.length == 5){
+                            odosliPri5();
                             break;
                         } else {
-                            alert("Pamäť je plná, uvolni miesto!");
+                            odosli();
                             break;
                         }
                     
@@ -128,16 +128,32 @@
         
     function odosli(){
         
-            zoznam.push({
-                n1: document.getElementById("n1").value,
-                n2: document.getElementById("n2").value,
-                operator: document.getElementById("operators").value,
-                result: document.getElementById("result").value
-            })
+        zoznam.push({
+            n1: document.getElementById("n1").value,
+            n2: document.getElementById("n2").value,
+            operator: document.getElementById("operators").value,
+            result: document.getElementById("result").value
+        })
 
         localStorage.setItem("zoznam", JSON.stringify(zoznam));
         zobrazVysledky();
     }
+
+
+    function odosliPri5(){
+
+        zoznam.shift();
+        zoznam.push({
+            n1: document.getElementById("n1").value,
+            n2: document.getElementById("n2").value,
+            operator: document.getElementById("operators").value,
+            result: document.getElementById("result").value
+        })
+
+        localStorage.setItem("zoznam", JSON.stringify(zoznam));
+        zobrazVysledky();
+    }
+
 
     function zmazKomplet(event){
         event.preventDefault()

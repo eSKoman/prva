@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.3.1 - Zadanie</title>
+    <style>
+        textarea, input, button, div {
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        textarea, input, button {
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+<body>
+    <label for="text">Zadaj text v ktorom budeme hľadať:</label></p>
+    <textarea id="text" name="text" rows="4" cols="50">Tu</textarea>
+
+    <div id="pocitadla">
+
+    </div>
+
+    <button>
+        Šifrovanie
+    </button>
+    
+    <div id="sifra">
+
+    </div>
+
+    <label for="hladany">Hľadaný text:</label>
+    <input type="hladany" id="hladany" name="hladany">
+
+    <button>
+        Hľadaj
+    </button>
+
+
+    <script>
+
+        // Analýza
+        const textarea = document.querySelector('textarea');
+        const count = document.getElementById('pocitadla');
+        textarea.onkeyup = (e) => {
+            count.innerHTML = "Počet znakov: " + (e.target.value.length) + " <br>Počet znakov bez medzier: " + (e.target.value.replace(/\s/g, '').length) + "<br> Počet číslic: " + (e.target.value.replace(/[^0-9]/g, '').length);
+        };
+
+
+    </script>
+</body>
+</html>

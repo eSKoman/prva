@@ -11,34 +11,33 @@
             margin-bottom: 30px;
         }
 
+        button {
+            margin-top: -20px;
+        }
+
         textarea, input, button {
             padding: 10px 15px;
         }
     </style>
 </head>
 <body>
-    <label for="text">Zadaj text v ktorom budeme hľadať:</label></p>
-    <textarea id="text" name="text" rows="4" cols="50">Tu</textarea>
+    <label for="text"><strong>Zadaj text v ktorom budeme hľadať:</strong></label></p>
+    <textarea id="text" name="text" rows="4" cols="50"></textarea>
 
     <div id="pocitadla">
 
     </div>
 
-    <button>
-        Šifrovanie
-    </button>
-    
-    <div id="sifra">
-
-    </div>
-
-    <label for="hladany">Hľadaný text:</label>
+    <label for="hladany"><strong>Hľadaný text:</strong></label>
     <input type="hladany" id="hladany" name="hladany">
 
-    <button>
+    <button onclick="StringSearch()">
         Hľadaj
     </button>
 
+    <div id="hladanie">
+
+    </div>
 
     <script>
 
@@ -46,9 +45,48 @@
         const textarea = document.querySelector('textarea');
         const count = document.getElementById('pocitadla');
         textarea.onkeyup = (e) => {
-            count.innerHTML = "Počet znakov: " + (e.target.value.length) + " <br>Počet znakov bez medzier: " + (e.target.value.replace(/\s/g, '').length) + "<br> Počet číslic: " + (e.target.value.replace(/[^0-9]/g, '').length);
+            count.innerHTML = "<h1>Analýza</h1>" + "<p><strong>Počet znakov: </strong>" + (e.target.value.length) + "</p>" + "<p><strong>Počet znakov bez medzier: </strong>" + (e.target.value.replace(/\s/g, '').length) + "</p>" + "<p><strong>Počet číslic: </strong>" + (e.target.value.replace(/[^0-9]/g, '').length) + "</p>" + "<p>" + (getLongestWord()) + "</p>" + "<p><strong>Zašifrovaný text: </strong><br>" + (sifra()) + "</p>";
         };
 
+        // Najdlhšie slovo
+        function longest_string(str_ara) {
+            var max = str_ara[0].length;
+            str_ara.map(v => max = Math.max(max, v.length));
+            result = str_ara.filter(v => v.length == max);
+            return "<strong>Počet znakov najdlhšieho slova </strong>" + result[0].length + "<strong> a to: </strong>" + result;
+        }
+
+        function getLongestWord(){
+            var text = document.getElementById("text").value.replace(/[\?.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+            var userArr = text.split(" ");
+            return longest_string(userArr);
+        };
+
+        // Vyhľadávanie
+        function StringSearch() {
+            var SearchTerm = document.getElementById("hladany").value;
+            var TextSearch = document.getElementById("text").value;
+
+            if (SearchTerm.length > 0 && TextSearch.indexOf(SearchTerm) > -1) {
+                document.getElementById('hladanie').innerHTML = "Reťazec nájdený!";
+            } else if (SearchTerm.length == 0) {
+                document.getElementById('hladanie').innerHTML = "Vlož hľadaný text!";
+            } else if (TextSearch.length == 0) {
+                document.getElementById('hladanie').innerHTML = "V Text Area nič nie je!";
+            } else {
+                document.getElementById('hladanie').innerHTML = ("V Text Area sa takýto text nenachádza!");
+            }
+        }
+
+        // šifrovanie
+        sifra();
+        function sifra() {
+            let textNaSifru = document.getElementById("text").value;
+            if (textNaSifru.length > 0) {
+               var sifrovane = textNaSifru.replace(/[O,o]+/g, "0").replace(/[I,i]+/g, "1").replace(/[E,e]+/g, "3").replace(/[A,a]+/g, "4").replace(/[S,s]+/g, "5").replace(/[B,b]+/g, "8");
+            }
+            return sifrovane;
+        }
 
     </script>
 </body>

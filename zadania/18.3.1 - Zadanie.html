@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18.3.1 - Zadanie</title>
+</head>
+<body>
+    
+
+    <script>
+
+        class Movie {
+            constructor(film, rok, herci) {
+                this.film = film;
+                this.rok = rok;
+                this.herci = herci;
+            }
+            
+            printDetail() {
+                //.replace(/[,]/g,"");
+                let zoznamHercov = this.herci.toString();
+                let zoznam = zoznamHercov.replace(/[,]/g,"\n");
+                return console.log("Film: " + this.film + "\nRok: " + this.rok + "\nHerci: \n" + zoznam);
+            }
+
+            printLongestActor(){
+                var text = this.herci.toString();
+                var userArr = text.split(",");
+                var max = userArr[0].length;
+                userArr.map(v => max = Math.max(max, v.length));
+                var result = userArr.filter(v => v.length == max);
+                return console.log("Najdlhšie meno z filmu " + this.film + " má herec: " + result);
+            }
+        }
+
+        var prvyFilm = new Movie("Marvelkovka", 1234, ["Peter", "Bugarisko", "Jovany"]);
+        prvyFilm.printDetail();
+        prvyFilm.printLongestActor();
+
+        var druhyFilm = new Movie("DC", 987, ["Cruela", "Čapatý", "Duchovny"]);
+        druhyFilm.printDetail();
+        druhyFilm.printLongestActor();
+
+    </script>
+
+</body>
+</html>

@@ -246,7 +246,21 @@ input[type="range"] {
     z-index: 4;
     left: 0;
     top: 0;
+    animation-name: example1;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
 }
+
+@keyframes example1 {
+    0%   {left:0px; top:0px;}
+    25%  {z-index: 3;left:70px; top:0px;}
+    50%  {z-index: 2;left:70px; top:70px;}
+    75%  {z-index: 1;left:0px; top:70px;}
+    100% {z-index: 0;left:0px; top:0px;}
+  }
 
 .druhy {
     width: 350px;
@@ -254,17 +268,45 @@ input[type="range"] {
     border: 40px solid blue;
     z-index: 3;
     right: 0;
-    top: 125px;
+    top: 70px;
+    animation-name: example2;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
 }
+
+@keyframes example2 {
+    0%   {left:70px; top:70px;}
+    25%  {z-index: 2;left:0px; top:70px;}
+    50%  {z-index: 1;left:0px; top:0px;}
+    75%  {z-index: 0;left:70px; top:0px;}
+    100% {z-index: 3;left:70px; top:70px;}
+  }
 
 .treti {
     width: 350px;
     height: 350px;
     border: 40px solid orange;
     left: 0;
-    top: 125px;
+    top: 70px;
     z-index: 2;
+    animation-name: example3;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
 }
+
+@keyframes example3 {
+    0%   {left:0px; top:70px;}
+    25%  {z-index: 1;left:0px; top:0px;}
+    50%  {z-index: 0;left:70px; top:0px;}
+    75%  {z-index: 3;left:70px; top:70px;}
+    100% {z-index: 2;left:0px; top:70px;}
+  }
 
 .stvrty {
     width: 350px;
@@ -272,10 +314,28 @@ input[type="range"] {
     border: 40px solid green;
     right: 0;
     z-index: 1;
+    animation-name: example4;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
 }
+
+@keyframes example4 {
+    0%   {left:70px; top:0px;}
+    25%  {z-index: 0;left:70px; top:70px;}
+    50%  {z-index: 1;left:0px; top:70px;}
+    75%  {z-index: 2;left:0px; top:0px;}
+    100% {z-index: 3;left:70px; top:0px;}, 
+  }
 
 ul.info li {
     font-weight: 300;
+}
+
+td a {
+    text-shadow: 1px 1px 1px black;
 }
 
 .tooltip {
@@ -285,20 +345,22 @@ ul.info li {
   }
   
   .tooltip .tooltiptext {
-    visibility: hidden;
+    opacity: 0;
     width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-  
     position: absolute;
+    top: -1000px;
     z-index: 1;
+    transition: 0.7s;
   }
   
   .tooltip:hover .tooltiptext {
-    visibility: visible;
+    opacity: 1;
+    top: 0px;
   }
 
   .pismeno::first-letter {
